@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react-native';
+import { StyleSheet, TextInput, FlatList } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import store_data from './store_data.json';
+
+import StoreCard from './components/Store'
 
 export default function App() {
+
+  renderData = ({item}) => <StoreCard product = {item} />
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView>
+        <TextInput
+          placeholder="Ara"
+          keyboardType="text"
+        />
+        <FlatList 
+          keyExtractor={(item) => item.id.toString()}
+          data = {store_data}
+          renderItem={renderData}
+        />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
