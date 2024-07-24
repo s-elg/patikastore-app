@@ -1,5 +1,5 @@
-import React from 'react-native';
-import { StyleSheet, TextInput, FlatList, Text } from 'react-native';
+import React, { Dimensions } from 'react-native';
+import { StyleSheet, TextInput, FlatList, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import store_data from './store_data.json';
 
@@ -7,7 +7,7 @@ import StoreCard from './components/Store'
 
 export default function App() {
 
-  renderData = ({item}) => <StoreCard product = {item} />
+  const renderData = ({item}) => <StoreCard product = {item} />
 
   return (
     <SafeAreaProvider>
@@ -19,9 +19,10 @@ export default function App() {
           keyboardType="text"
         />
         <FlatList 
-          keyExtractor={(item) => item.id.toString()}
           data = {store_data}
           renderItem={renderData}
+          numColumns={2}
+          columnWrapperStyle={styles.row}
         />
       </SafeAreaView>
     </SafeAreaProvider>
@@ -29,6 +30,11 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  row: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+
   page_title: {
     marginTop: 10,
     marginLeft: 10,
@@ -40,8 +46,6 @@ const styles = StyleSheet.create({
   input_area: {
     backgroundColor: 'gainsboro',
     height: 40,
-    borderColor: 'gainsboro',
-    borderWidth: 1,
     borderRadius: 10,
     margin: 10,
     paddingLeft: 10,
@@ -49,8 +53,8 @@ const styles = StyleSheet.create({
 
   container: {
     backgroundColor: 'white',
-    flex: 1
-    
-  }
+    flex: 1,
+    justifyContent: 'space-between'
+  },
 })
 
