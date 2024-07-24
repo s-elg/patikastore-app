@@ -1,5 +1,5 @@
 import React from 'react-native';
-import { StyleSheet, TextInput, FlatList } from 'react-native';
+import { StyleSheet, TextInput, FlatList, Text } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import store_data from './store_data.json';
 
@@ -11,9 +11,11 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView>
+      <SafeAreaView style = {styles.container}>
+        <Text style = {styles.page_title}>PATIKASTORE</Text>
         <TextInput
-          placeholder="Ara"
+          style = {styles.input_area}
+          placeholder="Ara..."
           keyboardType="text"
         />
         <FlatList 
@@ -25,4 +27,30 @@ export default function App() {
     </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  page_title: {
+    marginTop: 10,
+    marginLeft: 10,
+    fontSize: 30,
+    color: 'purple',
+    fontWeight: 'bold',
+  },
+
+  input_area: {
+    backgroundColor: 'gainsboro',
+    height: 40,
+    borderColor: 'gainsboro',
+    borderWidth: 1,
+    borderRadius: 10,
+    margin: 10,
+    paddingLeft: 10,
+  },
+
+  container: {
+    backgroundColor: 'white',
+    flex: 1
+    
+  }
+})
 
