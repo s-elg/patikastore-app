@@ -29,6 +29,7 @@ export default StyleSheet.create({
     price: {
         color: 'gray',
         fontSize: 15,
+        fontWeight: 'bold',
     },
 
     inStock: {

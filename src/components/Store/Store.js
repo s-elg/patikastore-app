@@ -12,7 +12,11 @@ const Store = ({product}) => {
             <View style = {styles.inner_container}>
                 <Text style = {styles.title}>{product.title}</Text>
                 <Text style = {styles.price}>{product.price}</Text>
-                <Text style = {styles.inStock}>{product.inStock ? "STOKTA VAR" : "STOKTA YOK"}</Text>
+                {
+                    !product.inStock && (
+                        <Text style={styles.inStock}>STOKTA YOK</Text>
+                    )
+                }
             </View>
         </View>
     );
