@@ -7,7 +7,7 @@ const Store = ({product}) => {
     return(
         <View style = {styles.container}>
             <View style = {styles.image_container}>
-                <Image style = {styles.image} source={{uri: product.imgURL}}/>
+                <Image style = {styles.image} source={{uri: product.imgURL}} resizeMode = "stretch"/>
             </View>
             <View style = {styles.inner_container}>
                 <Text style = {styles.title}>{product.title}</Text>
